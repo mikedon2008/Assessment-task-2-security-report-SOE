@@ -19,7 +19,7 @@ def addFeedback():
     if request.method == "POST":
         feedback = request.form["feedback"]
         dbHandler.insertFeedback(feedback)
-        dbHandler.listFeedback()
+        dbHandler.listFeedback() #test commit
         return render_template("/success.html", state=True, value="Back")
     else:
         dbHandler.listFeedback()
