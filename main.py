@@ -14,7 +14,7 @@ app = Flask(__name__)
 def addFeedback():
     if request.method == "GET" and request.args.get("url"):
         url = request.args.get("url", "")
-        return redirect(url, code=302)
+        return redirect(url, code=302) #open redirect vulnerability
     
     if request.method == "POST":
         feedback = request.form["feedback"]
