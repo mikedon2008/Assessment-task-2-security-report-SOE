@@ -54,9 +54,10 @@ def home():
         username = request.form["username"]
         password = request.form["password"]
         isLoggedIn = dbHandler.retrieveUsers(username, password)
+       
         if isLoggedIn:
             dbHandler.listFeedback()
-            return render_template("/success.html", value=username, state=isLoggedIn)
+            return render_template("/success.html", value=username, state=isLoggedIn) # Broken authentication
         else:
             return render_template("/index.html")
     else:
