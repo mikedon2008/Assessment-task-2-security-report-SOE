@@ -24,10 +24,10 @@ def retrieveUsers(username, password): # This could have SQL injection, broken a
     else:
         cur.execute(f"SELECT * FROM users WHERE password = '{password}'") # SQL injection, broken authentication 
         # Plain text log of visitor count as requested by Unsecure PWA management
-        with open("visitor_log.txt", "r") as file:
+        with open("visitor_log.txt", "r") as file:#Race condition
             number = int(file.read().strip())
             number += 1
-        with open("visitor_log.txt", "w") as file:
+        with open("visitor_log.txt", "w") as file: #race condition
             file.write(str(number))
         # Simulate response time of heavy app for testing purposes
         time.sleep(random.randint(80, 90) / 1000)
