@@ -39,7 +39,7 @@ def retrieveUsers(username, password): # This could have SQL injection, broken a
             return True
 
 
-def insertFeedback(feedback):
+def insertFeedback(feedback): #SQL injection, should replace the f-string SQL query so that it stops attackers entering SQL into the feedback form.
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
     cur.execute(f"INSERT INTO feedback (feedback) VALUES ('{feedback}')")
