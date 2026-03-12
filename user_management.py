@@ -47,7 +47,7 @@ def insertFeedback(feedback): #SQL injection, should replace the f-string SQL qu
     con.close()
 
 
-def listFeedback():
+def listFeedback():# XSS, file attack 
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
     data = cur.execute("SELECT * FROM feedback").fetchall()
