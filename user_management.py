@@ -17,12 +17,12 @@ def insertUser(username, password, DoB): #This stores plain text passwords so if
 def retrieveUsers(username, password): # This could have SQL injection, broken authentication
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
-    cur.execute(f"SELECT * FROM users WHERE username = '{username}'") # SQL injection 
+    cur.execute(f"SELECT * FROM users WHERE username = '{username}'") # SQL injection, broken authentication 
     if cur.fetchone() == None:
         con.close()
         return False
     else:
-        cur.execute(f"SELECT * FROM users WHERE password = '{password}'")
+        cur.execute(f"SELECT * FROM users WHERE password = '{password}'") # SQL injection, broken authentication 
         # Plain text log of visitor count as requested by Unsecure PWA management
         with open("visitor_log.txt", "r") as file:
             number = int(file.read().strip())
