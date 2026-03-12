@@ -14,7 +14,7 @@ def insertUser(username, password, DoB): #This stores plain text passwords so if
     con.close()
 
 
-def retrieveUsers(username, password):
+def retrieveUsers(username, password): # This could have SQL injection, broken authentication
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
     cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
