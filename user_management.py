@@ -30,7 +30,7 @@ def retrieveUsers(username, password): # This could have SQL injection, broken a
         with open("visitor_log.txt", "w") as file: #race condition
             file.write(str(number))
         # Simulate response time of heavy app for testing purposes
-        time.sleep(random.randint(80, 90) / 1000)
+        time.sleep(random.randint(80, 90) / 1000) # side channel attack 
         if cur.fetchone() == None:
             con.close()
             return False
