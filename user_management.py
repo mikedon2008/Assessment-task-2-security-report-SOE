@@ -3,7 +3,7 @@ import time
 import random
 
 
-def insertUser(username, password, DoB):
+def insertUser(username, password, DoB): #This stores plain text passwords so if anyone accessed into this, they could know the exact password and many personal information 
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
     cur.execute(
